@@ -10,3 +10,4 @@ function MetaData(title) {
 }
 
 export default MetaData
+

@@ -9,7 +9,7 @@ function Product({product }) {
       <div className="col-lg-3 col-md-4 col-sm-6 mb-3">
         <div className="card ">
           <Link to={`/productdetails/${product._id}`}>
-          <img className="w-100 efz" style={{width:"300px", height:"300px"}} src={product.images.url}  alt=""/>
+          <img className="w-100 efz" src={product.images.url}  alt=""/>
           </Link>
           <div className="card-body bg-light">
           <Link to={`/productdetails/${product._id}`}>

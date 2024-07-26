@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/jsx-key */
 import { useDispatch, useSelector } from 'react-redux'
 import Product from './product/Product'
 import Category from './category/Category'
@@ -6,6 +8,8 @@ import { getCategory } from '../redux/actions/CategoryAction'
 import { getProducts } from '../redux/actions/ProductAction'
 import Loading from './layout/Loading'
 import MetaData from './layout/MetaData'
+import Slider from './slider/Slider'
+import { getSlider } from '../redux/actions/SliderAction'
 
 function Home() {
 
@@ -19,17 +23,22 @@ function Home() {
   const { products } = useSelector((state) => state.pro)
   // console.log(products)
 
+  
+  const {sliders} = useSelector((state)=> state.sal)
+  //  console.log(sliders)
+
   useEffect(() => {
     dispatch(getCategory())
 
     dispatch(getProducts())
+
+    dispatch(getSlider())
   }, [dispatch])
   return (
     <>
       <MetaData title='Home' />
-
       {/* carousel start */}
-      <div className="container-fluid">
+    <div className="container-fluid">
         <div className="row px-xl-5 mb-2">
           <div className="col-lg-8 mb-2">
             <div className="carousel slide carousel-fade" data-bs-ride="carousel" id="cr">
@@ -39,27 +48,17 @@ function Home() {
                 <button type="button" data-bs-target="#cr" data-bs-slide-to="2"></button>
               </div>
               <div className="carousel-inner">
-                <div className="carousel-item active" style={{ height: '430px' }} data-bs-interval="2000">
-                  <img className="w-100 h-100" src="image/Marching.jpg" alt="1" />
-                  <div className="carousel-caption">
-                    <h1 className="animate__animated animate__backInDown">Men Fashion</h1>
-                    <button className="animate__animated animate__backInUp btn btn-outline-light p-2">Shop Now</button>
-                  </div>
-                </div>
-                <div className="carousel-item" style={{ height: '430px' }} data-bs-interval="2000">
-                  <img className="w-100 h-100" src="image/carousel-2.jpg" alt="2" />
-                  <div className="carousel-caption">
-                    <h1 className="animate__animated animate__backInDown">Women Fashion</h1>
-                    <button className="animate__animated animate__backInUp btn btn-outline-light p-2">Shop Now</button>
-                  </div>
-                </div>
-                <div className="carousel-item" style={{ height: '430px' }} data-bs-interval="2000">
-                  <img className="w-100 h-100" src="image/carousel-3.jpg" alt="3" />
-                  <div className="carousel-caption">
-                    <h1 className="animate__animated animate__backInDown">Kids Fashion</h1>
-                    <button className="animate__animated animate__backInUp btn btn-outline-light p-2">Shop Now</button>
-                  </div>
-                </div>
+                {/* slider start */}
+      {
+            loading ? (<Loading />) : (
+              sliders.map((slider) => (
+                <Slider slider={slider} />
+
+              ))
+            )
+          }
+                
+               
               </div>
             </div>
           </div>

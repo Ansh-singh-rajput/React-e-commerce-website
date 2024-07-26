@@ -8,7 +8,7 @@ function Category({category}) {
         <a href="#" className="text-decoration-none ">
           <div className="cat d-flex align-items-center cl">
             <div className=" overflow-hidden  wh ">
-              <img className="img-fluid rd " style={{width:"300px", height:"300px"}} src={category.image.url} alt=""/>
+              <img className="img-fluid rd "  src={category.image.url} alt=""/>
             </div>
             <div className="ps-3 text-dark">
               <h6>{category.name}</h6>

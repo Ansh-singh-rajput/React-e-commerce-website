@@ -1,6 +1,38 @@
+import { Link } from "react-router-dom"
+import  { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { clearErrors, loginUser } from '../../redux/actions/UserAction'
+import { useAlert } from 'react-alert'
+import { useNavigate } from 'react-router-dom'
 
 
 function Login() {
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const alert = useAlert()
+  const {isAuthenticated, error} = useSelector((state)=>state.auth)
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
+
+  const submitHandler = (n) => {
+    n.preventDefault();
+    console.log( email, password)
+
+    dispatch(loginUser(email,password))
+}
+
+useEffect(() => {
+  if (error) {
+    alert.error(error);
+    dispatch(clearErrors());
+  }
+  if (isAuthenticated) {
+    navigate("/");
+  }
+}, [error, alert, dispatch, isAuthenticated, navigate]);
+
   return (
    <>
    {/* <!-- Login --> */}
@@ -16,10 +48,10 @@ function Login() {
 
                 {/* <!-- Column-2 --> */}
                 <div className="col-lg-6 bglogin p-4">
-                    <form>
+                    <form  onSubmit={submitHandler}>
                         {/* <!-- logo --> */}
                         <center>
-                            <img className="mb-4 rounded-circle" src="/public/image/download.jpg" alt="logo" width="20%" height="20%"/> 
+                            <img className="mb-4 rounded-circle" src="/image/download.jpg" alt="logo" width="20%" height="20%"/> 
                         </center>
 
                         {/* <!-- Heading (Login) --> */}
@@ -29,7 +61,7 @@ function Login() {
                         <div className="row mb-3">
                             <div className="col-lg-2 text-center bg-secondary rounded text-light fw-light my-auto p-2">Email</div>
                             <div className="col-lg-10">
-                                <input className="form-control" type="email" placeholder="name@example.com" required></input>
+                                <input value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" type="email" placeholder="name@example.com" required></input>
                             </div>
                         </div>
 
@@ -37,18 +69,19 @@ function Login() {
                         <div className="row mb-5">
                             <div className="col-lg-2 text-center bg-secondary rounded text-light fw-light my-auto p-2">Password</div>
                             <div className="col-lg-10">
-                                <input className="form-control" type="password" required></input>
+                                <input  value={password} onChange={(e) => setPassword(e.target.value)} className="form-control" type="password" required></input>
                             </div>
                         </div>
 
                         {/* <!-- Button (Login) --> */}
                         <center>
-                            <button className="btn btn-primary mb-5 btn-lg">Login</button>
+                            <button type="submit" className="btn btn-primary mb-5 btn-lg">Login</button>
                         </center>
                         
                         {/* <!-- Register Now --> */}
                         <center>
-                            <p className="text-uppercase fw-light">Dont have an account? &nbsp;<a href="./register.html">Register Now</a></p>
+                            <p className="text-uppercase fw-light">Dont have an account? &nbsp;<Link  to="/register">Register Now</Link></p>
+
                         </center>
                     </form>
                 </div>

@@ -13,7 +13,7 @@ import axios from 'axios'
 export const getProducts = () => async(dispatch) => {
     try{
         dispatch({type : ALL_PRODUCT_REQUEST})
-        let link = 'https://api-ecommerce-xokr.onrender.com/api/products'
+        let link = '/api/products'
         const {data} = await axios.get(link)
         // console.log(data)
 
@@ -33,7 +33,8 @@ export const getProducts = () => async(dispatch) => {
 export const getProductDetails = (id) => async(dispatch) => {
     try{
         dispatch({ type: PRODUCT_DETAILS_REQUEST })
-        let link = `https://api-ecommerce-xokr.onrender.com/api/getProductDetail/${id}`
+        let link = `/api/getProductDetail/${id}`
+        // let link = `http://localhost:4000/api/getProductDetail/${id}`
        
 
         const { data } = await axios.get(link)

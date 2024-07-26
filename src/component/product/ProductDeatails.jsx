@@ -29,8 +29,9 @@ function ProductDeatails() {
     }
 
     const AddToCartHandler=()=>{
-        // alert('Add to card')
+        // alert('Add to cart')
         dispatch(addItemsToCart(id,quantity))
+
     }
 
     useEffect(() => {
