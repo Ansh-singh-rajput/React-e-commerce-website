@@ -27,10 +27,10 @@ function Header() {
           <div className="row py-1 px-xl-5 text-secondary" style={{ backgroundColor: '#f5f5f5' }}>
             <div className="col-lg-6 d-none d-lg-block">
               <div className="d-inline-flex align-items-center h-100">
-                <a href="#" className="nav-link aa ms-3">Home</a>
-                <a href="#" className="nav-link aa ms-3">contact</a>
+                <a href="/" className="nav-link aa ms-3">Home</a>
+                <a href="/contact" className="nav-link aa ms-3">contact</a>
                 <a href="#" className="nav-link aa ms-3">Help</a>
-                <a href="#" className="nav-link aa ms-3">FAQs</a>
+               
               </div>
             </div>
             <div className="col-lg-6 ts lg-center">
@@ -48,7 +48,7 @@ function Header() {
                           user && user.role !== 'admin' ? (
                             <Link className="dropdown-item" to='/orders/me'>Orders</Link>
                           ) : (
-                            <Link className="dropdown-item" to='/admin/dashboard'>Dashboard</Link>
+                            <Link className="dropdown-item" to='/dashboard'>Dashboard</Link>
                           )
                         }
                         <Link className="dropdown-item" to='/profile'>Profile</Link>
@@ -57,14 +57,7 @@ function Header() {
                     </div>
                   ) : !loading && <Link className="dropdown-item" to='/login'>Sign in</Link>
                 }
-                {/* <div className="dropdown mx-2">
-<button type="button" className="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown">My Account</button>
-<ul className="dropdown-menu dropdown-menu-right">
-<Link to="/login" className="dropdown-item">Sign In</Link>
-    <Link to="/register" className="dropdown-item">Sign Up</Link>
-
-</ul>
-</div> */}
+           
                 <div className="dropdown mx-2">
                   <button type="button" className="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown">USD</button>
                   <ul className="dropdown-menu dropdown-menu-right">
@@ -74,11 +67,11 @@ function Header() {
                   </ul>
                 </div>
                 <div className="dropdown">
-                  <button type="button" className="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown">EN</button>
+                  <button type="button" className="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown">Language</button>
                   <ul className="dropdown-menu dropdown-menu-right">
-                    <li><a href="#" className="dropdown-item">FR</a></li>
-                    <li><a href="#" className="dropdown-item">AR</a></li>
-                    <li><a href="#" className="dropdown-item">RU</a></li>
+                    <li><a href="#" className="dropdown-item">English</a></li>
+                    <li><a href="#" className="dropdown-item">Hindhi</a></li>
+                    <li><a href="#" className="dropdown-item">Urdu</a></li>
                   </ul>
                 </div>
               </div>
@@ -97,7 +90,7 @@ function Header() {
           <div className="row align-items-center bg-white py-3 px-xl-5 d-none d-lg-flex ">
             <div className="col-lg-4">
               <a href="" className="text-decoration-none">
-                <span className="h1 text-uppercase text-warning bg-dark px-2">Multi</span>
+                <span className="h1 text-uppercase text-warning bg-dark px-2">My</span>
                 <span className="h1 text-uppercase text-dark bg-warning px-2 ml-0">Shop</span>
               </a>
             </div>
@@ -142,7 +135,7 @@ function Header() {
             <div className="col-lg-9">
               <nav className="navbar py-3 navbar-dark bg-secondary navbar-expand-lg">
                 <a href="" className="text-decoration-none d-lg-none d-block">
-                  <span className="h1 text-uppercase bg-light text-dark px-2">Multi</span>
+                  <span className="h1 text-uppercase bg-light text-dark px-2">My</span>
                   <span className="h1 text-uppercase bg-warning text-light px-2 ml-0">Shop</span>
                 </a>
                 <button type="button" className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarhome">
@@ -151,8 +144,8 @@ function Header() {
                 <div className="navbar-collapse collapse justify-content-between" id="navbarhome">
                   <ul className="navbar-nav">
                     <li><Link to="/" className=" nav-link">Home</Link></li>
-                    <li><Link to="/shop" className="nav-link">Shop</Link></li>
-                    <li><Link to="productDetail/:id" className="nav-link">Shop Details</Link></li>
+                    <li><Link to="/dashboard" className="nav-link">Dashboard</Link></li>
+                    <li><Link to="order/confirm" className="nav-link">Order Confirmation</Link></li>
                     <div className="dropdown">
                       <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                       <ul className="dropdown-menu">

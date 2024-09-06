@@ -39,11 +39,11 @@ function Sidebar() {
             </li>
 
             <li>
-                <Link to="/admin/product"><i className="fas fa-shopping-basket"></i> Orders</Link>
+                <Link to="/admin/order"><i className="fas fa-shopping-basket"></i> Orders</Link>
             </li>
 
             <li>
-                <Link href="#"><i className="fas fa-users"></i> Users</Link>
+                <Link to="/admin/users"><i className="fas fa-users"></i> Users</Link>
             </li>
 
         </ul>
