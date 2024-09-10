@@ -8,7 +8,7 @@ import { myOrders } from '../../redux/actions/OrderAction'
 
 function MyOrder() {
   const alert =useAlert();
-    const dispatch =useDispatch();
+    const dispatch =useDispatch()
 
     const {loading,error,orders} =useSelector(state=>state.myOrders)
     // console.log(orders)
